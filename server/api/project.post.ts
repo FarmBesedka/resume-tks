@@ -5,8 +5,14 @@ export default defineEventHandler(async (event) => {
   try {
     const db = getDB()
     const body = await readBody(event)
-    const res = db.prepare(`INSERT INTO projects (name, link, description, slug) VALUES (?, ?, ?, ?)`).run(body.name, body.link, body.description, slugify(body.name))
-    return res
+    db.prepare(`INSERT INTO projects (name, link, shortDescription, description, slug) VALUES (?, ?, ?, ?, ?)`).run(
+      body.name,
+      body.link,
+      body.shortDescription,
+      body.description,
+      slugify(body.name),
+    )
+    return 'OK'
   } catch (error) {
     console.error(error)
     return error

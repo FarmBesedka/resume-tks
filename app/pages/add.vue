@@ -1,14 +1,9 @@
 <template>
   <UForm class="space-y-4" @submit="onSubmit">
-    <UFormField>
-      <UInput v-model="projectData.name" class="w-full" placeholder="Название проекта" />
-    </UFormField>
-    <UFormField>
-      <UInput v-model="projectData.link" class="w-full" placeholder="Ссылка на проект" />
-    </UFormField>
-    <UFormField>
-      <UTextarea v-model="projectData.description" class="w-full" autoresize placeholder="Описание проекта" />
-    </UFormField>
+    <UInput v-model="projectData.name" class="w-full" placeholder="Название проекта" />
+    <UInput v-model="projectData.link" class="w-full" placeholder="Ссылка на проект" />
+    <UTextarea v-model="projectData.shortDescription" class="w-full" autoresize placeholder="Краткое описание проекта" />
+    <UTextarea v-model="projectData.description" class="w-full" autoresize placeholder="Полное описание проекта" />
     <UButton type="submit" label="Сохранить" />
   </UForm>
 </template>
@@ -17,9 +12,10 @@
 import { type InputData } from '#shared/types/interfaces'
 const toast = useToast()
 
-const projectData = ref<inputData>({
+const projectData = ref<InputData>({
   name: 'Резюме',
   link: 'https://github.com/FarmBesedka/resume-tks',
+  shortDescription: 'Это резюме - веб-приложение, демонстрирующее навыки fullstack-разработки',
   description: `Резюме-портфолио fullstack-разработчика на Nuxt 4
 
 Это резюме - веб-приложение, демонстрирующее навыки fullstack-разработки. Проект содержит визитку и список проектов, загружаемых из базы данных.
@@ -48,12 +44,11 @@ const projectData = ref<inputData>({
 
 const onSubmit = async () => {
   try {
-    const res = await $fetch('/api/project', {
+    await $fetch('/api/project', {
       method: 'POST',
       body: projectData.value,
     })
-    console.log(res)
-    toast.add({ title: 'Проект добавлен' })
+    toast.add({ title: `Проект "${projectData.value.name}" добавлен` })
   } catch (error) {
     toast.add({ title: 'Ошибка' })
     console.error(error)

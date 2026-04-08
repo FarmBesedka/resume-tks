@@ -11,13 +11,14 @@ export const getDB = () => {
 
 const initTables = () => {
   if (!db) return
-
-  const createTable = db.prepare(`CREATE TABLE IF NOT EXISTS projects (
+  db.prepare(
+    `CREATE TABLE IF NOT EXISTS projects (
     id INTEGER PRIMARY KEY,
     name TEXT,
     slug TEXT,
     link TEXT,
+    shortDescription TEXT,
     description TEXT
-  )`)
-  createTable.run()
+  )`,
+  ).run()
 }

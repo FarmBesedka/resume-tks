@@ -6,6 +6,7 @@ export interface Skill {
 export interface InputData {
   name: string
   link: string
+  shortDescription: string
   description: string
 }
 

@@ -1,65 +1,26 @@
 <template>
-  <UCard variant="subtle">
-    <template #header>
-      <UUser
-        name="Кирилл Тельтевской"
-        description="Junior Fullstack Developer"
-        :avatar="{
-          src: 'avatar.jpg',
-          loading: 'lazy',
-          icon: 'i-lucide-image',
-        }"
-        size="3xl"
-      />
-    </template>
+  <UPage>
+    <UPageHeader title="Кирилл Тельтевской" description="Junior Fullstack Developer" />
 
-    <div class="flex flex-col gap-4">
-      <p v-for="about in abouts">{{ about }}</p>
-    </div>
-
-    <template #footer>
-      <div class="flex flex-col gap-4">
-        <UUser v-for="skill in skills" :name="skill.title" :description="skill.body" />
-      </div>
-    </template>
-  </UCard>
-
-  <ULink to="/projects" as="button">Перейти к проектам</ULink>
-
-  <USeparator icon="lucide:circle" class="my-4" />
+    <UPageBody class="pb-12">
+      <About />
+      <USeparator />
+      <Skills />
+      <USeparator />
+      <UButton label="Перейти к проектам" to="/projects" variant="outline" color="neutral" icon="lucide:list" />
+      <!-- <UPageLinks :links="links" variant="outline" color="neutral" /> -->
+    </UPageBody>
+  </UPage>
 </template>
 
 <script setup lang="ts">
-import { type Skill } from '#shared/types/interfaces'
+import type { PageLink } from '@nuxt/ui'
 
-const abouts: string[] = [
-  'Начинающий fullstack-разработчик с уклоном во фронтенд.',
-  'Основной стек – Vue, Nuxt, Node.js, SQL и NoSQL. Проекты разворачиваю на собственном VPS.',
-  'Параллельно администрирую личный VPN-сервер на ShadowSocks.',
-  'Хобби – электроника: Arduino, LoRa, пайка, DC-модули.',
-  'Нахожусь в г. Великом Устюге. Ищу удаленный формат работы или аутсорсинг.',
-]
-
-const skills: Skill[] = [
+const links: PageLink[] = [
   {
-    title: 'Frontend',
-    body: 'JavaScript, HTML5, CSS3, SASS, Vue, Nuxt, NuxtUI, Pinia, Vite, PixiJS, TypeScript (начальный)',
-  },
-  {
-    title: 'Backend & Базы данных',
-    body: 'Node.js, Express, WebSocket, MySQL, PostgreSQL, SQLite, MongoDB',
-  },
-  {
-    title: 'DevOps, Сети, Инструменты',
-    body: 'Git, VPS, ShadowSocks (VPN)',
-  },
-  {
-    title: 'Дизайн',
-    body: 'Figma, Pixso, Aseprite, Adobe Photoshop, Illustrator, Premiere, After Effects, InDesign',
-  },
-  {
-    title: 'Embedded & Электроника',
-    body: 'Arduino, Wemos, LoRa, DC-модули, пайка',
+    label: 'Перейти к проектам',
+    icon: 'lucide:list',
+    to: '/projects',
   },
 ]
 </script>

@@ -1,10 +1,9 @@
 <template>
-  <HeaderComp />
+  <Header />
 
   <UContainer>
-    <UPageBody>
-      <slot />
-      <ContactsComp />
-    </UPageBody>
+    <slot />
   </UContainer>
+
+  <Footer />
 </template>

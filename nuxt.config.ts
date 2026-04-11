@@ -8,13 +8,14 @@ export default defineNuxtConfig({
     },
   },
   css: ['~/assets/css/main.css'],
-  modules: ['@nuxt/ui'],
   colorMode: {
     preference: 'dark',
   },
   app: {
     head: {
       title: 'Резюме ТКС',
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' }],
     },
   },
+  modules: ['@nuxt/ui'],
 })

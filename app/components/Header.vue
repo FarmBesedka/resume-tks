@@ -1,6 +1,7 @@
 <template>
   <UHeader :toggle="true">
     <template #left>
+      <UIcon name="lucide:badge-check" class="size-5" />
       <p class="font-bold text-2xl">РЕЗЮМЕ</p>
     </template>
 
@@ -23,10 +24,12 @@ const items = computed<NavigationMenuItem[]>(() => [
   {
     label: 'Главная',
     to: '/',
+    icon: 'lucide:folder-open-dot',
   },
   {
     label: 'Проекты',
     to: '/projects',
+    icon: 'lucide:list',
   },
 ])
 </script>

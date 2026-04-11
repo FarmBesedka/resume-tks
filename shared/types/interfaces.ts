@@ -13,3 +13,9 @@ export interface InputData {
 export interface Project extends InputData {
   slug: string
 }
+
+export interface Link {
+  label: String
+  icon: String
+  to: String
+}

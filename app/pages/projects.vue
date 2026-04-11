@@ -20,6 +20,5 @@ const projects = computed(() => data.value || [])
 const openModal = (index: number) => {
   open.value = !open.value
   i.value = index || 0
-  console.log(open.value)
 }
 </script>

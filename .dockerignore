@@ -3,3 +3,6 @@ node_modules
 .git
 .env
 *.log
+server/db/*.db
+server/api/project.post.ts
+app/pages/add.vue

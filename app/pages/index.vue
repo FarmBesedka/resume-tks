@@ -2,13 +2,12 @@
   <UPage>
     <UPageHeader title="Кирилл Тельтевской" description="Junior Fullstack Developer" />
 
-    <UPageBody class="pb-12">
+    <UPageBody>
       <About />
       <USeparator />
       <Skills />
       <USeparator />
       <UButton label="Перейти к проектам" to="/projects" variant="outline" color="neutral" icon="lucide:list" />
-      <!-- <UPageLinks :links="links" variant="outline" color="neutral" /> -->
     </UPageBody>
   </UPage>
 </template>
